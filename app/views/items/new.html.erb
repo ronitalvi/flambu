@@ -1,4 +1,4 @@
-
+<!--
 
 <%= simple_form_for(@item) do |f| %>
   <%= f.error_notification %>
@@ -29,3 +29,8 @@
   <br>
   <div><%= link_to 'Back', items_path, class: "btn btn-dark" %></div>
 <% end %>
+ -->
+
+ <h1>New item</h1>
+<%= render 'form', item: @item %>
+<%= link_to 'Back', items_path %>

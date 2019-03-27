@@ -2,12 +2,19 @@
 <ul>
   <% @items.each do |item|   %>
   <li><%= item.user_id %></li>
+  <li><%= item.title %></li>
+
   <li><%= item.description %></li>
   <li><%= item.location %></li>
+  <li><%= item.category.name %></li>
+
+
 
 
 
 
   <% end %>
+
+  <%= link_to 'New item', new_item_path %>
 
   </ul>

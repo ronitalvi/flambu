@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @listing.item %>
+</p>
+
+<p>
+  <strong>Is available:</strong>
+  <%= @listing.is_available %>
+</p>
+
+<p>
+  <strong>Sale price:</strong>
+  <%= @listing.sale_price %>
+</p>
+
+<p>
+  <strong>Price per time:</strong>
+  <%= @listing.price_per_time %>
+</p>
+
+<p>
+  <strong>Time unit:</strong>
+  <%= @listing.time_unit %>
+</p>
+
+<p>
+  <strong>Listing type:</strong>
+  <%= @listing.listing_type %>
+</p>
+
+<p>
+  <strong>Auction begin price:</strong>
+  <%= @listing.auction_begin_price %>
+</p>
+
+<%= link_to 'Edit', edit_listing_path(@listing) %> |
+<%= link_to 'Back', listings_path %>
