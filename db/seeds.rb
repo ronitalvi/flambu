@@ -19,19 +19,19 @@ User.create(email: 'roni@roni.com', password: '123123')
 puts 'users created'
 
 puts 'listing types creating'
-sale = ListingType.new(name: 'Sale')
-rent = ListingType.new(name:'Rent')
-auction = ListingType.new(name: 'Auction')
+sale = ListingType.create(name: 'Sale')
+rent = ListingType.create(name:'Rent')
+auction = ListingType.create(name: 'Auction')
 puts 'listing types created'
 
 puts 'time units creating'
 
-min = TimeUnit.new(name: 'Minute')
-hour = TimeUnit.new(name: 'Hour')
-day = TimeUnit.new(name: 'Day')
-week = TimeUnit.new(name: 'Week')
-month = TimeUnit.new(name: 'Month')
-year = TimeUnit.new(name: 'Year')
+min = TimeUnit.create(name: 'Minute')
+hour = TimeUnit.create(name: 'Hour')
+day = TimeUnit.create(name: 'Day')
+week = TimeUnit.create(name: 'Week')
+month = TimeUnit.create(name: 'Month')
+year = TimeUnit.create(name: 'Year')
 
 puts 'time units created'
 
@@ -46,6 +46,9 @@ furniture = Category.create(name: 'Furniture')
 groceries = Category.create(name: 'Groceries')
 electronics = Category.create(name: 'Electronics')
 puts 'categoris created'
+
+puts 'items creating'
+
 
 rug = Item.new(user_id: 1,title: 'rug', description: 100, location: 'tel aviv')
 rug.category = clothes
