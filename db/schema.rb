@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 2019_03_28_115959) do
 
   create_table "listings", force: :cascade do |t|
     t.bigint "item_id"
+    t.text "title"
     t.boolean "is_available"
     t.float "sale_price"
     t.float "price_per_time"
