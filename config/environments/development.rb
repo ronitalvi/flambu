@@ -60,5 +60,7 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.action_cable.url = "ws://flambuapp.herokuapp.com/cable"
+  config.action_cable.url = "wss://flambuapp.herokuapp.com/cable"
+  config.action_cable.allowed_request_origins = ["https://flambuapp.herokuapp.com/cable", "http://flambuapp.herokuapp.com/cable"]
+
 end
