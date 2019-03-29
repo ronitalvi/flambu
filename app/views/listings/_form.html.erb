@@ -1,0 +1,19 @@
+
+<%= simple_form_for(@listing) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.association :item %>
+    <%= f.input :is_available %>
+    <%= f.input :sale_price %>
+    <%= f.input :price_per_time %>
+    <%= f.association :time_unit %>
+    <%= f.association :listing_type %>
+    <%= f.input :auction_begin_price %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

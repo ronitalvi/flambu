@@ -1,0 +1,10 @@
+<h4>Hi, <%= current_user.email %></h4>
+
+<h1>Users:</h1>
+<ul>
+  <%= render @users %>
+</ul>
+
+<%= link_to "Friend Requests", friend_requests_path %>
+|
+<%= link_to "My Chats", chats_path %>

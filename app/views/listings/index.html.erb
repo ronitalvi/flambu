@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Is available</th>
+      <th>Sale price</th>
+      <th>Price per time</th>
+      <th>Time unit</th>
+      <th>Listing type</th>
+      <th>Auction begin price</th>
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @listings.each do |listing| %>
+      <tr>
+        <td><%= listing.item.title %></td>
+        <td><%= listing.is_available %></td>
+        <td><%= listing.sale_price %></td>
+        <td><%= listing.price_per_time %></td>
+        <td><%= listing.time_unit.name %></td>
+        <td><%= listing.listing_type.name %></td>
+        <td><%= listing.auction_begin_price %></td>
+        <td><%= link_to 'Show', listing %></td>
+        <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
+        <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%#= link_to 'New Listing',  new_item_listing_path %>

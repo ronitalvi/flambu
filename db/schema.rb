@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_17_211903) do
+ActiveRecord::Schema.define(version: 2019_03_28_115959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,10 +23,54 @@ ActiveRecord::Schema.define(version: 2019_03_17_211903) do
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "chats", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "recipient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.integer "following_id", null: false
+    t.integer "follower_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follower_id"], name: "index_follows_on_follower_id"
+    t.index ["following_id", "follower_id"], name: "index_follows_on_following_id_and_follower_id", unique: true
+    t.index ["following_id"], name: "index_follows_on_following_id"
+  end
+
+  create_table "friend_requests", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "friend_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["friend_id"], name: "index_friend_requests_on_friend_id"
+    t.index ["user_id", "friend_id"], name: "index_friend_requests_on_user_id_and_friend_id", unique: true
+    t.index ["user_id"], name: "index_friend_requests_on_user_id"
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["friend_id"], name: "index_friendships_on_friend_id"
+    t.index ["user_id", "friend_id"], name: "index_friendships_on_user_id_and_friend_id", unique: true
+    t.index ["user_id"], name: "index_friendships_on_user_id"
+  end
+
   create_table "items", force: :cascade do |t|
     t.text "description"
     t.string "location"
     t.string "title"
+    t.bigint "category_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -40,6 +84,37 @@ ActiveRecord::Schema.define(version: 2019_03_17_211903) do
     t.datetime "updated_at", null: false
     t.index ["review_id"], name: "index_items_reviews_on_review_id"
     t.index ["user_id"], name: "index_items_reviews_on_user_id"
+  end
+
+  create_table "listing_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "listings", force: :cascade do |t|
+    t.bigint "item_id"
+    t.boolean "is_available"
+    t.float "sale_price"
+    t.float "price_per_time"
+    t.bigint "time_unit_id"
+    t.bigint "listing_type_id"
+    t.float "auction_begin_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_listings_on_item_id"
+    t.index ["listing_type_id"], name: "index_listings_on_listing_type_id"
+    t.index ["time_unit_id"], name: "index_listings_on_time_unit_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "body"
+    t.bigint "user_id"
+    t.bigint "chat_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chat_id"], name: "index_messages_on_chat_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "photos", force: :cascade do |t|
@@ -58,6 +133,12 @@ ActiveRecord::Schema.define(version: 2019_03_17_211903) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "time_units", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -94,9 +175,17 @@ ActiveRecord::Schema.define(version: 2019_03_17_211903) do
   end
 
   add_foreign_key "accounts", "users"
+  add_foreign_key "friend_requests", "users"
+  add_foreign_key "friendships", "users"
+  add_foreign_key "friendships", "users", column: "friend_id"
   add_foreign_key "items", "users"
   add_foreign_key "items_reviews", "reviews"
   add_foreign_key "items_reviews", "users"
+  add_foreign_key "listings", "items"
+  add_foreign_key "listings", "listing_types"
+  add_foreign_key "listings", "time_units"
+  add_foreign_key "messages", "chats"
+  add_foreign_key "messages", "users"
   add_foreign_key "photos", "items"
   add_foreign_key "reviews", "users"
   add_foreign_key "transactions", "items"
