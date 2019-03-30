@@ -39,7 +39,6 @@ puts 'time units created'
 
 
 
-
 puts 'categories creating'
 clothes = Category.create(name: 'Clothes')
 furniture = Category.create(name: 'Furniture')
@@ -65,3 +64,12 @@ light.save
 
 
 puts 'items created'
+
+
+puts 'listings creating'
+
+Listing.create(item_id: 1, title: 'amaizing skate board', is_available: true, price_per_time: 200, sale_price: 5000, listing_type_id: 1, auction_begin_price: 100, time_unit_id: 3)
+Listing.create(item_id: 2, title: 'amaizing surf board', is_available: true, price_per_time: 500, sale_price: 8000, listing_type_id: 2, auction_begin_price: 100, time_unit_id: 3)
+Listing.create(item_id: 4, title: 'amaizing snow board', is_available: true, price_per_time: 300, sale_price: 6000, listing_type_id: 1, auction_begin_price: 100, time_unit_id: 3)
+
+puts 'listing created'

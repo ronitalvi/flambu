@@ -91,11 +91,11 @@ Rails.application.configure do
   end
 
   # Do not dump schema after migrations.
-  config.active_record.dump_schema_after_migration = false
-  config.cache_store = :redis_store, "redis://localhost:6379/0/cache", { expires_in: 90.minutes }
+#   config.active_record.dump_schema_after_migration = false
+#   config.cache_store = :redis_store, "redis://localhost:6379/0/cache", { expires_in: 90.minutes }
 
-  config.action_dispatch.rack_cache = {
-  metastore: "redis://localhost:6379/1/metastore",
-  entitystore: "redis://localhost:6379/1/entitystore"
-}
+#   config.action_dispatch.rack_cache = {
+#   metastore: "redis://localhost:6379/1/metastore",
+#   entitystore: "redis://localhost:6379/1/entitystore"
+# }
 end

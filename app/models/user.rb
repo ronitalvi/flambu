@@ -15,6 +15,12 @@ class User < ApplicationRecord
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
 
+  has_many :items, dependent: :destroy
+  has_many :listings, through: :items
+  has_many :reviews, dependent: :destroy
+  has_many :transactions
+
+
   def follow(user_id)
     following_relationships.create(following_id: user_id)
   end

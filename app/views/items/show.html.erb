@@ -9,6 +9,7 @@
   <li><%= @item.description %></li>
   <li><%= @item.location %></li>
   <li><%= @item.category.name %></li>
+  <%= link_to 'creat listing',  new_item_listing_path(@item) %>
 
 
 </ul>

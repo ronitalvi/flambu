@@ -1,8 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Listing:</strong>
+  <%= @listing.title %>
+</p>
+
+<p>
   <strong>Item:</strong>
-  <%= @listing.item %>
+  <%= @listing.item.title %>
 </p>
 
 <p>
@@ -22,12 +27,11 @@
 
 <p>
   <strong>Time unit:</strong>
-  <%= @listing.time_unit %>
-</p>
+  <%= @listing.time_unit.name %>
 
 <p>
   <strong>Listing type:</strong>
-  <%= @listing.listing_type %>
+  <%= @listing.listing_type.name %>
 </p>
 
 <p>
@@ -35,5 +39,5 @@
   <%= @listing.auction_begin_price %>
 </p>
 
-<%= link_to 'Edit', edit_listing_path(@listing) %> |
+<%#= link_to 'Edit', edit_listing_path(@listing) %> |
 <%= link_to 'Back', listings_path %>
