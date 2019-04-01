@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   attr_accessor :new_category_name
   belongs_to :user
   belongs_to :category, required: false
-  has_many :listings
+  has_many :listings, dependent: :destroy
   before_save :create_category_from_name
 
   def create_category_from_name
