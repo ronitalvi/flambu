@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV['REDISCLOUD_URL'] %>
+  url: <%= ENV['redis://rediscloud:hBkXgqI1QbcuC9780zoyW9IqN78nr9II@redis-18440.c59.eu-west-1-2.ec2.cloud.redislabs.com:18440'] %>
 
