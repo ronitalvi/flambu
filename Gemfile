@@ -13,6 +13,8 @@ gem 'redis-rails'
 gem 'sprockets', '>= 3.0.0'
 gem 'sprockets-es6'
 
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.6.1'
