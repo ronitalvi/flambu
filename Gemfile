@@ -10,6 +10,10 @@ gem 'rails', '5.2.2'
 gem 'redis'
 gem 'redis-rails'
 
+gem 'sprockets', '>= 3.0.0'
+gem 'sprockets-es6'
+
+
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.6.1'
 gem 'sassc-rails'
