@@ -10,6 +10,6 @@ test:
 
 production:
   adapter: redis
-  url: redis://rediscloud:0eQ8Pil79sdJVouJxk9hJeeLJed4GfPb@redis-12051.c2.eu-west-1-3.ec2.cloud.redislabs.com:12051
+  url: redis://rediscloud:hBkXgqI1QbcuC9780zoyW9IqN78nr9II@redis-18440.c59.eu-west-1-2.ec2.cloud.redislabs.com:18440
   # url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
-  channel_prefix: flambu-test-app_production
+  channel_prefix: chat_channel
