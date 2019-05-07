@@ -6,6 +6,7 @@ class MessagesController < ApplicationController
     @message = @chat.messages.new(message_params)
     @messages = @chat.messages.order(created_at: :desc)
     if @message.save
+      puts 'message created'
       redirect_to chat_messages_path(@chat)
     end
   end
